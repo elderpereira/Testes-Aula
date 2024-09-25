@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criação de Personagem RPG</title>
+    <!-- importa folha de estilo style.css -->
+    <link rel="stylesheet" href="style.css">
+    <!-- import main.js -->
+    <script src="main.js"></script>
+</head>
+<body>
+
+    <!-- Huds -->
+    <div class="hud-container">
+        <!-- hud player -->
+        <div class="hud" id="playerHud">
+            <h2>Personagem: <span id="hudName"></span></h2>
+            <p>Nível: <span id="hudLevel"></span></p>
+            <p>Vida: <span id="hudHealth"></span></p>
+            <p>Experiência: <span id="hudExperience"></span></p>
+            <p>Ataque: <span id="hudAttack"></span></p>
+            <p>Defesa: <span id="hudDefense"></span></p>
+            <p>Moedas: <span id="hudGold"></span></p>
+            <p>Vitórias Consecutivas: <span id="hudConsecutiveWins"></span></p>
+            <p>Recorde de Vitórias Consecutivas: <span id="hudRecordWins"></span></p>
+        </div>
+        <!-- hud enemy -->
+        <div class="hud hidden" id="enemyHud">
+            <h2>Inimigo: <span id="hudEnemyName"></span></h2>
+            <p>Vida: <span id="hudEnemyHealth"></span></p>
+            <p>Ataque: <span id="hudEnemyAttack"></span></p>
+            <p>Defesa: <span id="hudEnemyDefense"></span></p>
+        </div>
+    </div>
+
+    <!-- Conteiner de DIV Criação e Seleção -->
+    <div class="container">
+
+        <!-- Div Criação -->
+        <div id="creation">
+            <h1>Crie o Nome do Seu Personagem</h1>
+            <input type="text" id="characterName" placeholder="Digite o nome do personagem">
+            <br>
+            <button onclick="createCharacter()">Criar Personagem</button>
+        </div>
+
+        <!-- Div de seleção de personagem -->
+        <div id="selection">
+            <h1>Selecione Seu Personagem</h1>
+            <select id="characterList" onchange="selectCharacter()">
+                <option value="">Selecione um personagem</option>
+            </select>
+            <br><br>
+            <button id="enterGame" class="hidden" onclick="enterGame()">Entrar</button>
+        </div>
+
+        <!-- Divs do game iniciam aqui -->
+         <!-- div de ações (Cidade, caçada, Arena) -->
+        <div id="actions" class="hidden">
+            <button onclick="goToCity()">Ir para Cidade</button>
+            <button onclick="goToHunt()">Caçar</button>
+            <button onclick="goToArena()">Arena</button>
+        </div>
+
+        <!-- divs de cidade, caçada e batalha -->
+        <div id="hunting" class="hidden">
+            <h1>Escolha uma Região para Caçar</h1>
+            <button onclick="startHunt('Pantano')">Pântano</button>
+            <button onclick="startHunt('Selva')">Selva</button>
+            <button onclick="startHunt('Montanha')">Montanha</button>
+        </div>
+
+        <!-- Div de batalha -->
+        <div id="battle" class="hidden">
+            <h1>Batalha</h1>
+            <button onclick="attack()">Atacar</button>
+            <button onclick="defend()">Defender</button>
+            
+            <!-- div para mostrar os logs de tras para frente -->
+             <div id="battleLogContainer">
+                <p id="battleLog"></p>
+            </div> 
+        </div>
+
+        <!-- Div de arena -->
+        <div id="arena" class="hidden">
+            <h1>Torneio da Arena</h1>
+            <p id="arenaLog"></p>
+            <button onclick="startArena()">Iniciar Torneio</button>
+        </div>
+        <div id="city" class="hidden">
+            <!-- Menu da cidade será inserido aqui -->
+        </div>
+    </div>
+</body>
+</html>
